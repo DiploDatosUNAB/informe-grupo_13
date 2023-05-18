@@ -9,11 +9,17 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 # Cargar los paquetes necesarios acá
 library(readxl)
+library(dplyr)
+library(ggplot2)
 
 ```
 
 
 ## Introducción
+
+Los datos que se presentan corresponden a las defunciones maternas en provincia de Buenos Aires registradas durante el periodo de 2009 a 2021. Los mismo se encuentran en el catalogo de datos abiertos de la Dirección Provincial de Estadística y Salud Digital (https://catalogo.datos.gba.gob.ar/dataset/defunciones-maternas).
+Estos datos se encuentran estructurados en 8 variables, de las cuales 7 son cualitativas como: año, región sanitaria, código de municipio, nombre del municipio, código CIE10, descripción del código CIE10 y clasificación de la causa de muerte materna;  y una variable cuantitativa: cantidad de muertes maternas.
+
 
 
 
@@ -31,7 +37,30 @@ defunciones_maternas_2009_2021 <- read_excel("datos/defunciones-maternas-2009-20
 ```{r}
 # Cödigo de R acá 
 # Agregá más bloques según sea necesario
+defunciones_maternas_2009_2021 |>
+  head()
 ```
+
+```{r}
+defunciones_maternas_2009_2021 %>% 
+  summarise(n = n())
+```
+
+La base de datos presenta 8 variables con 1018 observaciones.
+
+```{r}
+str(defunciones_maternas_2009_2021)
+```
+```{r}
+defunciones_maternas_2009_2021|>
+  select(anio, cantidad)|>
+  summary()
+
+```
+```{r}
+summary(defunciones_maternas_2009_2021)
+```
+
 
 
 
