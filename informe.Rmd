@@ -18,7 +18,7 @@ library(ggplot2)
 ## Introducción
 
 Los datos que se presentan corresponden a las defunciones maternas en provincia de Buenos Aires registradas durante el periodo de 2009 a 2021. Los mismo se encuentran en el catalogo de datos abiertos de la Dirección Provincial de Estadística y Salud Digital (https://catalogo.datos.gba.gob.ar/dataset/defunciones-maternas).
-Estos datos se encuentran estructurados en 8 variables, de las cuales 7 son cualitativas como: año, región sanitaria, código de municipio, nombre del municipio, código CIE10, descripción del código CIE10 y clasificación de la causa de muerte materna;  y una variable cuantitativa: cantidad de muertes maternas.
+Estos datos se encuentran estructurados en 8 variables, de las cuales 7 son cualitativas como: región sanitaria, código de municipio, nombre del municipio, código CIE10, descripción del código CIE10 y clasificación de la causa de muerte materna;  y dos variable cuantitativa: año y cantidad de muertes maternas.
 
 
 
@@ -60,7 +60,83 @@ defunciones_maternas_2009_2021|>
 ```{r}
 summary(defunciones_maternas_2009_2021)
 ```
+```{r}
+defunciones_maternas_2009_2021 %>%
+  select(anio, cantidad) %>%
+  group_by(anio) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad))
+```
 
+```{r}
+defunciones_maternas_2009_2021 %>%
+  select(anio, cantidad) %>%
+  group_by(anio) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>%
+  ggplot(aes(anio, cantidad_muertes_informadas)) +
+  geom_line (color = "red")
+```
+
+
+
+
+```{r}
+defunciones_maternas_2009_2021 %>%
+  filter(`region_sanitaria `== "VI") %>%
+  select(anio, cantidad) %>%
+  group_by(anio) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad))
+```
+
+
+```{r}
+defunciones_maternas_2009_2021 %>%
+  filter(`region_sanitaria `== "VI") %>%
+  select(anio, cantidad) %>%
+  group_by(anio) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
+  ggplot(aes(anio, cantidad_muertes_informadas)) +
+  geom_line (color = "red")
+```
+
+
+```{r}
+defunciones_maternas_2009_2021 %>%
+  filter(`municipio_nombre `=="Esteban Echeverría") %>%
+  select(anio, cantidad) %>%
+  group_by(anio) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad))
+```
+
+```{r}
+defunciones_maternas_2009_2021 %>%
+  filter(`municipio_nombre `=="Esteban Echeverría") %>%
+  select(anio, cantidad) %>%
+  group_by(anio) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
+  ggplot(aes(anio, cantidad_muertes_informadas)) +
+  geom_line (color = "red")
+```
+
+
+```{r}
+defunciones_maternas_2009_2021 %>%
+  filter(clasificacion == "DIRECTA") %>%
+  select(CIE10_descripcion, cantidad) %>%
+  group_by(CIE10_descripcion) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad))
+  
+```
+
+
+```{r}
+defunciones_maternas_2009_2021 %>%
+  select(anio, CIE10_descripcion, cantidad) %>%
+  filter(CIE10_descripcion == "EMBARAZO TERMINADO EN ABORTO (O00 - O08)") %>%
+  group_by(anio) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
+  ggplot(aes(anio, cantidad_muertes_informadas)) +
+  geom_line (color = "red")
+```
 
 
 
