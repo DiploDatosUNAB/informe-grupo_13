@@ -1,6 +1,6 @@
 ---
-title: "titulo"
-author: "nombres"
+title: "Análisis defunciones materna en PBA durante 2009-2021."
+author: "Fabio Gallardo"
 output: html_document
 ---
 
@@ -8,6 +8,8 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # Cargar los paquetes necesarios acá
+library(readxl)
+
 ```
 
 
@@ -20,6 +22,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 # Código para cargar o leer los datos
+defunciones_maternas_2009_2021 <- read_excel("datos/defunciones-maternas-2009-2021.xlsx")
+
 ```
 
 
