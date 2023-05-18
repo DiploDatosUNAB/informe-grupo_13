@@ -1,5 +1,5 @@
 ---
-title: "Análisis defunciones materna en PBA durante 2009-2021."
+title: "Análisis de las defunciones maternas en PBA durante 2009-2021."
 author: "Fabio Gallardo"
 output: html_document
 ---
