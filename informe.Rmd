@@ -9,6 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(readxl)
 library(dplyr)
+library(tidyr)
 library(ggplot2)
 
 ```
@@ -147,10 +148,113 @@ defunciones_maternas_2009_2021 %>%
 
 
 ## Hipótesis
+
 ¿Existen diferencias entre las tasas de mortalidad materna entre las diferentes Regiones Sanitarias?
+
+Se comparó la tasa de 4 regiones sanitarias: V, VI, VII y XII. Son las regiones que se encuentran en las zonas de mayor concentración poblacional en la PBA.
+
+```{r}
+tabla_regio_an <-defunciones_maternas_2009_2021 %>%
+  group_by(anio,`region_sanitaria `) %>% 
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>%
+  pivot_wider(names_from = `region_sanitaria `,
+              values_from = cantidad_muertes_informadas,
+              values_fill = 0) %>% 
+  select(c(V, VI, VII, XII))
+
+```
+
+ 
+
+Para el calculo de las tasas por año de estas cuatro regiones era necesario tener la cantidad de nacidos vivos de cada región.
+
+Nuevamente se recurrió al catálogo de datos abiertos de la Dirección Provincial de Estadística y Salud Digital. 
+
+```{r}
+nacidos_vivos_regiones_PBA <- read_excel("datos/nacidos_vivos_regiones_PBA.xlsx")
+View(nacidos_vivos_regiones_PBA)
+print(nacidos_vivos_regiones_PBA)
+```
+
+
+Se busco conjugar ambas bases para poder calcular las tasas. 
+
+
+```{r}
+left_join(tabla_regio_an, nacidos_vivos_regiones_PBA,
+          by = "anio")
+```
+
+
+
+Finalmente se las calculó en Excel y se importó la información en un tabla.
+
+```{r}
+tasas_region_selec <- read_excel("datos/tasas_region_selec.xlsx")
+View(tasas_region_selec)
+print(tasas_region_selec)
+```
+
+Al compara las tasas de mortalidad materna se puede observar que la región VII se encuentra por arriba de las otras tasas en varios años, 2010, 2013, 2014, 2017, y 2020. En cambio, la región XII supera a las demás en los años 2011, 2018 y en la actualidad. Por último, las tasas más altas se observan en los años 2010 y 2021, donde aproximadamente 80 mujeres morían por cada 100.000 nacidos vivos. 
+Se puede decir que hay diferencias importantes entres las tasas de mortalidad materna en las cuatro regiones analizadas, donde las regiones VII y XII registran diferencias por encima en varios periodos de tiempos.
+
+
+
+
 
 ¿Las causas directas e indirectas tienen la misma tendencia de aparición durante el periodo 2009 a 2021?
 
+
+```{r}
+tabla_anio_cla <- defunciones_maternas_2009_2021 %>%
+  group_by(anio, clasificacion) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
+  pivot_wider(names_from = clasificacion,
+              values_from = cantidad_muertes_informadas,
+              values_fill = 0) %>%
+  print()
+
+```
+La tabla muestra la cantidad de muertes por año según causas directas o indirectas.
+
+El primer gráfico muestra la tendencia de muertes maternas directas.
+
+```{r}
+tabla_anio_cla %>%
+  ggplot(aes(anio, DIRECTA)) +
+  geom_line ( color = "red")
+```
+
+El segundo gráfico muestra la tendencia de muertes maternas indirectas.
+
+```{r}
+tabla_anio_cla %>%
+  ggplot(aes(anio, INDIRECTA)) +
+  geom_line ( color = "red")
+```
+
+Sin bien no se pudo unir en un solo grafico ambas tendencias, las muertes maternas directas tienen una tendencia en descenso para el periodo. En cambio, las muertes maternas indirectas se encontraban en una meseta, pero del 2020 al 2021 registran un aumento elevado. Muchos artículos informan sobre esto, debido al impacto que tuvo el COVID en las embarazadas.
+
+
 ¿Las causas de muerte materna según clasificación CIE 10 tuvieron el mismo porcentaje de frecuencia durante el periodo 2009 a 2021?
+
+A continuación, se presenta la tabla de frecuencia observada, ya que los porcentajes se sacaron con Excel. 
+
+```{r}
+defunciones_maternas_2009_2021 %>%
+  group_by(anio, CIE10_descripcion) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
+  pivot_wider(names_from = anio,
+              values_from = cantidad_muertes_informadas,
+              values_fill = 0)
+
+  
+```
+
+Respecto a los porcentajes de frecuencias de muerte materna según clasificación CIE 10 en el periodo 2009 a 2021, se observa que “OTRAS AFECCIONES OBSTETRICAS NO CLASIFICADAS EN OTRA PARTE” tiene el mayor porcentaje de ocurrencias, salvo en el 2011 que ocupo el segundo lugar. Por otro lado, el “EMBARAZO TERMINADO EN ABORTO” ocupo el segundo lugar en porcentaje de frecuencia durante los años 2009, 2010, 2013, 2015, 2018 y 2019. 
+
+
+
+
 
 
