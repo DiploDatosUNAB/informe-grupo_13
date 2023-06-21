@@ -9,7 +9,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(readxl)
 library(dplyr)
+library(tidyr)
 library(ggplot2)
+library(knitr)
 
 ```
 
@@ -63,7 +65,8 @@ defunciones_maternas_2009_2021 %>%
   summarise(cantidad_muertes_informadas = sum(cantidad))
 ```
 
-En este gráfico se puede observar que el año de mayor muerte maternas fue el 2010 y el registro mas bajo en el 2019. Además, se puede observar que desde el 2016 al 2020 el registro desciende sostenidamente, pero en el año 2021 crece abruptamente muy cercano al año de mayor registro de muertes maternas.
+
+En el siguiente gráfico se puede observar que el año de mayor muerte maternas fue el 2010 y el registro mas bajo en el 2019. Además, se puede observar que desde el 2016 al 2020 el registro desciende sostenidamente, pero en el año 2021 crece abruptamente muy cercano al año de mayor registro de muertes maternas.
 
 ```{r}
 defunciones_maternas_2009_2021 %>%
@@ -84,7 +87,7 @@ defunciones_maternas_2009_2021 %>%
   summarise(cantidad_muertes_informadas = sum(cantidad))
 ```
 
-En el gráfico a continuación se observa que los años de mayor registro fueron el 2010 y 2016, y el registro más bajo 2020. Se puede observar una leve tendencia descendiente, a diferencia de la curva del total en PBA que a partir del 2021 los registros generan un cresimiento abrupto.
+En el gráfico a continuación se observa que los años de mayor registro fueron el 2010 y 2016, y el registro más bajo 2020. Se puede observar una tendencia descendiente, a diferencia de la curva del total en PBA que a partir del 2021 los registros generan un cresimiento abrupto.
 
 ```{r}
 defunciones_maternas_2009_2021 %>%
@@ -121,11 +124,11 @@ defunciones_maternas_2009_2021 %>%
   
 ```
 
-El siguiente gráfico muestra que a pesar que el “embarazo terminado en aborto” es la causa mas frecuente de muerte materna directa en PBA, se encuentra en franco descenso:
+El siguiente gráfico muestra que a pesar que el “embarazo terminado en aborto” es la causa mas frecuente de muerte materna directa en PBA, se encuentra en  descenso:
+
 
 ```{r}
 defunciones_maternas_2009_2021 %>%
-  select(anio, CIE10_descripcion, cantidad) %>%
   filter(CIE10_descripcion == "EMBARAZO TERMINADO EN ABORTO (O00 - O08)") %>%
   group_by(anio) %>%
   summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
@@ -137,7 +140,6 @@ Respecto a las muertes maternas donde las causas obstétricas son indirectas (re
 
 ```{r}
 defunciones_maternas_2009_2021 %>%
-  select(anio, CIE10_descripcion, cantidad) %>%
   filter(CIE10_descripcion == "OTRAS AFECCIONES OBSTETRICAS NO CLASIFICADAS EN OTRA PARTE (O95 - O99)") %>%
   group_by(anio) %>%
   summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
@@ -147,10 +149,126 @@ defunciones_maternas_2009_2021 %>%
 
 
 ## Hipótesis
+
 ¿Existen diferencias entre las tasas de mortalidad materna entre las diferentes Regiones Sanitarias?
+
+Se comparó la tasa de 4 regiones sanitarias: V, VI, VII y XII. Son las regiones que se encuentran en las zonas de mayor concentración poblacional en la PBA.
+
+```{r}
+tabla_regio_an <-defunciones_maternas_2009_2021 %>%
+  group_by(anio,`region_sanitaria `) %>% 
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>%
+  pivot_wider(names_from = `region_sanitaria `,
+              values_from = cantidad_muertes_informadas,
+              values_fill = 0) %>% 
+  select(c(V, VI, VII, XII)) %>% 
+  print()
+
+```
+
+ 
+
+Para el calculo de las tasas por año de estas cuatro regiones fue necesario tener la cantidad de nacidos vivos de cada región.
+
+Nuevamente se recurrió al catálogo de datos abiertos de la Dirección Provincial de Estadística y Salud Digital. 
+
+```{r}
+nacidos_vivos_regiones_PBA <- read_excel("datos/nacidos_vivos_regiones_PBA.xlsx")
+print(nacidos_vivos_regiones_PBA)
+```
+
+
+Se busco conjugar ambas bases para poder calcular las tasas. 
+
+
+```{r}
+nacidos_vivos_regiones_PBA <- read_excel("datos/nacidos_vivos_regiones_PBA.xlsx") |> 
+  pivot_longer(cols = -anio, names_to = "region_sanitaria", values_to = "nacidos_vivos") %>%
+  print()
+```
+
+
+```{r}
+defunciones_maternas_2009_2021 %>%
+  group_by(anio, region_sanitaria = `region_sanitaria ` ) %>% 
+  summarise(cantidad_muertes_informadas = sum(cantidad)) |> 
+  left_join(nacidos_vivos_regiones_PBA) |> 
+  mutate(tasa = round(
+    (cantidad_muertes_informadas/nacidos_vivos)*100000, 2)) %>% 
+  select(anio, region_sanitaria, tasa) %>% 
+  filter(region_sanitaria %in% c("V", "VI", "VII", "XII")) %>% 
+  pivot_wider(names_from = region_sanitaria, 
+              values_from = tasa)
+  
+```
+
+
+```{r}
+defunciones_maternas_2009_2021 %>%
+  group_by(anio, region_sanitaria = `region_sanitaria ` ) %>% 
+  summarise(cantidad_muertes_informadas = sum(cantidad)) |> 
+  left_join(nacidos_vivos_regiones_PBA) |> 
+  mutate(tasa = round(
+    (cantidad_muertes_informadas/nacidos_vivos)*100000, 2)) %>%
+  select(anio, region_sanitaria, tasa) %>% 
+  filter(region_sanitaria %in% c("V", "VI", "VII", "XII")) %>%
+  ggplot(aes(anio, tasa))+
+  geom_line(aes(color= region_sanitaria))+
+  geom_point()
+
+
+```
+
+
+Al compara las tasas de mortalidad materna se puede observar que la región VII se encuentra por arriba de las otras tasas en varios años, 2010, 2013, 2014, 2017, y 2020. En cambio, la región XII supera a las demás en los años 2011, 2018 y en la actualidad. Por último, las tasas más altas se observan en los años 2010 y 2021, donde aproximadamente 80 mujeres morían por cada 100.000 nacidos vivos. 
+Se puede decir que hay diferencias importantes entres las tasas de mortalidad materna en las cuatro regiones analizadas, donde las regiones VII y XII registran diferencias por encima en varios periodos de tiempos.
+
+
+
+
 
 ¿Las causas directas e indirectas tienen la misma tendencia de aparición durante el periodo 2009 a 2021?
 
+
+```{r}
+tabla_anio_cla <- defunciones_maternas_2009_2021 %>%
+  group_by(anio, clasificacion) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
+  pivot_wider(names_from = clasificacion,
+              values_from = cantidad_muertes_informadas,
+              values_fill = 0) %>%
+  print()
+
+```
+La tabla muestra la cantidad de muertes por año según causas directas o indirectas.
+
+```{r}
+defunciones_maternas_2009_2021 %>% 
+  group_by(anio, clasificacion) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>%
+  ggplot(aes(anio, cantidad_muertes_informadas))+
+  geom_line(aes(color= clasificacion))+
+  geom_point()
+  
+```
+
+El gráfico muestra que de las muertes maternas directas tienen una tendencia en descenso para el periodo. En cambio, las muertes maternas indirectas se encontraban en una meseta, pero del 2020 al 2021 registran un aumento elevado. Muchos artículos informan sobre esto, debido al impacto que tuvo el COVID en las embarazadas.
+
+
 ¿Las causas de muerte materna según clasificación CIE 10 tuvieron el mismo porcentaje de frecuencia durante el periodo 2009 a 2021?
 
+A continuación, se presenta la tabla de frecuencia observada, ya que los porcentajes se sacaron con Excel. 
+
+```{r}
+defunciones_maternas_2009_2021 %>%
+  group_by(anio, CIE10_descripcion) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
+  pivot_wider(names_from = anio,
+              values_from = cantidad_muertes_informadas,
+              values_fill = 0)
+
+  
+```
+
+Respecto a los porcentajes de frecuencias de muerte materna según clasificación CIE 10 en el periodo 2009 a 2021, se observa que “OTRAS AFECCIONES OBSTETRICAS NO CLASIFICADAS EN OTRA PARTE” tiene el mayor porcentaje de ocurrencias, salvo en el 2011 que ocupo el segundo lugar. Por otro lado, el “EMBARAZO TERMINADO EN ABORTO” ocupo el segundo lugar en porcentaje de frecuencia durante los años 2009, 2010, 2013, 2015, 2018 y 2019. 
 
