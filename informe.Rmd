@@ -12,6 +12,7 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 library(knitr)
+library(gt)
 
 ```
 
@@ -37,7 +38,8 @@ A continuación tenemos una presentación preliminar de la composición de la ba
 
 ```{r}
 defunciones_maternas_2009_2021 |>
-  head()
+  head() %>% 
+  gt()
 ```
 
 Respecto a la estructuración de la base de datos está compuesta por 8 variables y 1018 observaciones.
@@ -53,7 +55,7 @@ Respecto de las variables cuantitativas presentan estas propiedades:
 ```{r}
 defunciones_maternas_2009_2021|>
   select(anio, cantidad)|>
-  summary()
+  summary() %>% 
 
 ```
 La frecuencia de muertes maternas  durante los años 2009 a 2021 es la siguiente:
@@ -62,11 +64,28 @@ La frecuencia de muertes maternas  durante los años 2009 a 2021 es la siguiente
 defunciones_maternas_2009_2021 %>%
   select(anio, cantidad) %>%
   group_by(anio) %>%
-  summarise(cantidad_muertes_informadas = sum(cantidad))
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
+  gt()
+  
 ```
 
 
-En el siguiente gráfico se puede observar que el año de mayor muerte maternas fue el 2010 y el registro mas bajo en el 2019. Además, se puede observar que desde el 2016 al 2020 el registro desciende sostenidamente, pero en el año 2021 crece abruptamente muy cercano al año de mayor registro de muertes maternas.
+En el siguiente gráfico se puede observar que el año de mayor muertes maternas fue el 2010 y el registro mas bajo en el 2019. Además, se puede observar que desde el 2016 al 2020 el registro desciende sostenidamente, pero en el año 2021 crece abruptamente muy cercano al año de mayor registro de muertes maternas.
+
+```{r}
+defunciones_maternas_2009_2021 %>%
+  select(anio, cantidad) %>%
+  group_by(anio) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>%
+ggplot(aes(anio, cantidad_muertes_informadas)) +
+  geom_col(color="Red", size=1)+
+  geom_smooth(method = "lm", alpha=0)+
+  ggforce::geom_mark_circle(aes(filter = cantidad_muertes_informadas == max(cantidad_muertes_informadas),
+                                label = cantidad_muertes_informadas))+
+  ggforce::geom_mark_circle(aes(filter = cantidad_muertes_informadas == min(cantidad_muertes_informadas),
+                                label = cantidad_muertes_informadas))
+```
+
 
 ```{r}
 defunciones_maternas_2009_2021 %>%
@@ -84,10 +103,28 @@ defunciones_maternas_2009_2021 %>%
   filter(`region_sanitaria `== "VI") %>%
   select(anio, cantidad) %>%
   group_by(anio) %>%
-  summarise(cantidad_muertes_informadas = sum(cantidad))
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
+  gt()
 ```
 
-En el gráfico a continuación se observa que los años de mayor registro fueron el 2010 y 2016, y el registro más bajo 2020. Se puede observar una tendencia descendiente, a diferencia de la curva del total en PBA que a partir del 2021 los registros generan un cresimiento abrupto.
+En el gráfico a continuación se observa que en la Región VI los años de mayor registro fueron el 2010 y 2016, y el registro más bajo 2020.
+```{r}
+defunciones_maternas_2009_2021 %>%
+  filter(`region_sanitaria `== "VI") %>%
+  select(anio, cantidad) %>%
+  group_by(anio) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
+  ggplot(aes(anio, cantidad_muertes_informadas)) +
+  geom_col(color="Red", size=1)+
+  geom_smooth(method = "lm", alpha=0)+
+  ggforce::geom_mark_circle(aes(filter = cantidad_muertes_informadas == max(cantidad_muertes_informadas),
+                                label = cantidad_muertes_informadas))+
+  ggforce::geom_mark_circle(aes(filter = cantidad_muertes_informadas == min(cantidad_muertes_informadas),
+                                label = cantidad_muertes_informadas))
+
+```
+
+
 
 ```{r}
 defunciones_maternas_2009_2021 %>%
@@ -108,7 +145,8 @@ defunciones_maternas_2009_2021 %>%
   select(CIE10_descripcion, cantidad) %>%
   group_by(CIE10_descripcion) %>%
   summarise(cantidad_muertes_informadas = sum(cantidad)) %>%
-  arrange(desc(cantidad_muertes_informadas))
+  arrange(desc(cantidad_muertes_informadas)) %>% 
+  gt()
   
 ```
 
@@ -120,11 +158,29 @@ defunciones_maternas_2009_2021 %>%
   select(CIE10_descripcion, cantidad) %>%
   group_by(CIE10_descripcion) %>%
   summarise(cantidad_muertes_informadas = sum(cantidad)) %>%
-  arrange(desc(cantidad_muertes_informadas))
+  arrange(desc(cantidad_muertes_informadas)) %>% 
+  gt()
   
 ```
 
 El siguiente gráfico muestra que a pesar que el “embarazo terminado en aborto” es la causa mas frecuente de muerte materna directa en PBA, se encuentra en  descenso:
+
+```{r}
+defunciones_maternas_2009_2021 %>%
+  filter(CIE10_descripcion == "EMBARAZO TERMINADO EN ABORTO (O00 - O08)") %>%
+  group_by(anio) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>%
+  ggplot(aes(anio, cantidad_muertes_informadas)) +
+  geom_col(color="Red", size=1)+
+  geom_smooth(method = "lm", alpha=0)+
+  ggforce::geom_mark_circle(aes(filter = cantidad_muertes_informadas == max(cantidad_muertes_informadas),
+                                label = cantidad_muertes_informadas))+
+  ggforce::geom_mark_circle(aes(filter = cantidad_muertes_informadas == min(cantidad_muertes_informadas),
+                                label = cantidad_muertes_informadas))
+
+ 
+```
+
 
 
 ```{r}
@@ -137,6 +193,25 @@ defunciones_maternas_2009_2021 %>%
 ```
 
 Respecto a las muertes maternas donde las causas obstétricas son indirectas (resultan de enfermedad existente desde antes del embarazo o de una enfermedad que evoluciona durante el mismo, no debidas a causas obstétricas directas, pero sí agravadas por los efectos fisiológicos del embarazo) se observa una elevación abrupta durante el 2021 en PBA:
+
+
+```{r}
+defunciones_maternas_2009_2021 %>%
+  filter(CIE10_descripcion == "OTRAS AFECCIONES OBSTETRICAS NO CLASIFICADAS EN OTRA PARTE (O95 - O99)") %>%
+  group_by(anio) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
+  ggplot(aes(anio, cantidad_muertes_informadas)) +
+  geom_col(color="Red", size=1)+
+  geom_smooth(method = "lm", alpha=0)+
+  ggforce::geom_mark_circle(aes(filter = cantidad_muertes_informadas == max(cantidad_muertes_informadas),
+                                label = cantidad_muertes_informadas))+
+  ggforce::geom_mark_circle(aes(filter = cantidad_muertes_informadas == min(cantidad_muertes_informadas),
+                                label = cantidad_muertes_informadas))
+
+```
+
+
+
 
 ```{r}
 defunciones_maternas_2009_2021 %>%
@@ -154,13 +229,15 @@ defunciones_maternas_2009_2021 %>%
 
 Se comparó la tasa de 4 regiones sanitarias: V, VI, VII y XII. Son las regiones que se encuentran en las zonas de mayor concentración poblacional en la PBA.
 
+
+
 ```{r}
 tabla_regio_an <-defunciones_maternas_2009_2021 %>%
   group_by(anio,`region_sanitaria `) %>% 
   summarise(cantidad_muertes_informadas = sum(cantidad)) %>%
   pivot_wider(names_from = `region_sanitaria `,
               values_from = cantidad_muertes_informadas,
-              values_fill = 0) %>% 
+              values_fill = 0) %>%
   select(c(V, VI, VII, XII)) %>% 
   print()
 
@@ -174,7 +251,7 @@ Nuevamente se recurrió al catálogo de datos abiertos de la Dirección Provinci
 
 ```{r}
 nacidos_vivos_regiones_PBA <- read_excel("datos/nacidos_vivos_regiones_PBA.xlsx")
-print(nacidos_vivos_regiones_PBA)
+gt(nacidos_vivos_regiones_PBA)
 ```
 
 
@@ -201,6 +278,23 @@ defunciones_maternas_2009_2021 %>%
               values_from = tasa)
   
 ```
+
+```{r}
+defunciones_maternas_2009_2021 %>%
+  group_by(anio, region_sanitaria = `region_sanitaria ` ) %>% 
+  summarise(cantidad_muertes_informadas = sum(cantidad)) |> 
+  left_join(nacidos_vivos_regiones_PBA) |> 
+  mutate(tasa = round(
+    (cantidad_muertes_informadas/nacidos_vivos)*100000, 2)) %>%
+  select(anio, region_sanitaria, tasa) %>% 
+  filter(region_sanitaria %in% c("V", "VI", "VII", "XII")) %>%
+  ggplot(aes(anio, tasa))+
+  geom_col(aes(fill=region_sanitaria), position = "dodge")+
+  ggforce::geom_mark_circle(aes(filter = tasa == max(tasa),
+                                label = tasa))
+  
+```
+
 
 
 ```{r}
@@ -247,12 +341,26 @@ defunciones_maternas_2009_2021 %>%
   group_by(anio, clasificacion) %>%
   summarise(cantidad_muertes_informadas = sum(cantidad)) %>%
   ggplot(aes(anio, cantidad_muertes_informadas))+
+  geom_col(aes(fill=clasificacion), position = "dodge")+
+  ggforce::geom_mark_circle(aes(filter = cantidad_muertes_informadas == max(cantidad_muertes_informadas),
+                                label = cantidad_muertes_informadas))
+
+```
+
+
+
+
+```{r}
+defunciones_maternas_2009_2021 %>% 
+  group_by(anio, clasificacion) %>%
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %>%
+  ggplot(aes(anio, cantidad_muertes_informadas))+
   geom_line(aes(color= clasificacion))+
   geom_point()
   
 ```
 
-El gráfico muestra que de las muertes maternas directas tienen una tendencia en descenso para el periodo. En cambio, las muertes maternas indirectas se encontraban en una meseta, pero del 2020 al 2021 registran un aumento elevado. Muchos artículos informan sobre esto, debido al impacto que tuvo el COVID en las embarazadas.
+El gráfico muestra que de las muertes maternas directas tienen una tendencia en descenso para el periodo analizado. En cambio, las muertes maternas indirectas se encontraban en una meseta, pero del 2020 al 2021 registran un aumento elevado. Muchos artículos informan sobre esto, debido al impacto que tuvo el COVID en las embarazadas.
 
 
 ¿Las causas de muerte materna según clasificación CIE 10 tuvieron el mismo porcentaje de frecuencia durante el periodo 2009 a 2021?
