@@ -55,7 +55,7 @@ Respecto de las variables cuantitativas presentan estas propiedades:
 ```{r}
 defunciones_maternas_2009_2021|>
   select(anio, cantidad)|>
-  summary() %>% 
+  summary()
 
 ```
 La frecuencia de muertes maternas  durante los años 2009 a 2021 es la siguiente:

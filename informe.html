@@ -381,18 +381,465 @@ cuantitativa: año y cantidad de muertes maternas.</p>
 <p>A continuación tenemos una presentación preliminar de la composición
 de la base de datos:</p>
 <pre class="r"><code>defunciones_maternas_2009_2021 |&gt;
-  head()</code></pre>
-<pre><code>## # A tibble: 6 × 8
-##    anio `region_sanitaria ` municipio_id `municipio_nombre ` CIE10_codigo
-##   &lt;dbl&gt; &lt;chr&gt;               &lt;chr&gt;        &lt;chr&gt;               &lt;chr&gt;       
-## 1  2009 Ignorado            Ignorado     Ignorado            O99         
-## 2  2009 VI                  06028        Almirante Brown     O85         
-## 3  2009 VI                  06028        Almirante Brown     O15         
-## 4  2009 VI                  06028        Almirante Brown     O99         
-## 5  2009 IX                  06049        Azul                O99         
-## 6  2009 IV                  06070        Baradero            O99         
-## # ℹ 3 more variables: CIE10_descripcion &lt;chr&gt;, clasificacion &lt;chr&gt;,
-## #   cantidad &lt;dbl&gt;</code></pre>
+  head() %&gt;% 
+  gt()</code></pre>
+<div id="jsaiplqoyn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jsaiplqoyn table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#jsaiplqoyn thead, #jsaiplqoyn tbody, #jsaiplqoyn tfoot, #jsaiplqoyn tr, #jsaiplqoyn td, #jsaiplqoyn th {
+border-style: none;
+}
+#jsaiplqoyn p {
+margin: 0;
+padding: 0;
+}
+#jsaiplqoyn .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#jsaiplqoyn .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#jsaiplqoyn .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#jsaiplqoyn .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#jsaiplqoyn .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#jsaiplqoyn .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#jsaiplqoyn .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#jsaiplqoyn .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#jsaiplqoyn .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#jsaiplqoyn .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#jsaiplqoyn .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#jsaiplqoyn .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#jsaiplqoyn .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#jsaiplqoyn .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#jsaiplqoyn .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#jsaiplqoyn .gt_from_md > :first-child {
+margin-top: 0;
+}
+#jsaiplqoyn .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#jsaiplqoyn .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#jsaiplqoyn .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jsaiplqoyn .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#jsaiplqoyn .gt_row_group_first td {
+border-top-width: 2px;
+}
+#jsaiplqoyn .gt_row_group_first th {
+border-top-width: 2px;
+}
+#jsaiplqoyn .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jsaiplqoyn .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#jsaiplqoyn .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#jsaiplqoyn .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#jsaiplqoyn .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jsaiplqoyn .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#jsaiplqoyn .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#jsaiplqoyn .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#jsaiplqoyn .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#jsaiplqoyn .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#jsaiplqoyn .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jsaiplqoyn .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#jsaiplqoyn .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jsaiplqoyn .gt_left {
+text-align: left;
+}
+#jsaiplqoyn .gt_center {
+text-align: center;
+}
+#jsaiplqoyn .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#jsaiplqoyn .gt_font_normal {
+font-weight: normal;
+}
+#jsaiplqoyn .gt_font_bold {
+font-weight: bold;
+}
+#jsaiplqoyn .gt_font_italic {
+font-style: italic;
+}
+#jsaiplqoyn .gt_super {
+font-size: 65%;
+}
+#jsaiplqoyn .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#jsaiplqoyn .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#jsaiplqoyn .gt_indent_1 {
+text-indent: 5px;
+}
+#jsaiplqoyn .gt_indent_2 {
+text-indent: 10px;
+}
+#jsaiplqoyn .gt_indent_3 {
+text-indent: 15px;
+}
+#jsaiplqoyn .gt_indent_4 {
+text-indent: 20px;
+}
+#jsaiplqoyn .gt_indent_5 {
+text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="anio">anio</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="region_sanitaria ">region_sanitaria </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="municipio_id">municipio_id</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="municipio_nombre ">municipio_nombre </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="CIE10_codigo">CIE10_codigo</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="CIE10_descripcion">CIE10_descripcion</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="clasificacion">clasificacion</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="cantidad">cantidad</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="anio" class="gt_row gt_right">2009</td>
+<td headers="region_sanitaria " class="gt_row gt_left">Ignorado</td>
+<td headers="municipio_id" class="gt_row gt_left">Ignorado</td>
+<td headers="municipio_nombre " class="gt_row gt_left">Ignorado</td>
+<td headers="CIE10_codigo" class="gt_row gt_left">O99</td>
+<td headers="CIE10_descripcion" class="gt_row gt_left">OTRAS AFECCIONES OBSTETRICAS NO CLASIFICADAS EN OTRA PARTE (O95 - O99)</td>
+<td headers="clasificacion" class="gt_row gt_left">INDIRECTA</td>
+<td headers="cantidad" class="gt_row gt_right">1</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2009</td>
+<td headers="region_sanitaria " class="gt_row gt_left">VI</td>
+<td headers="municipio_id" class="gt_row gt_left">06028</td>
+<td headers="municipio_nombre " class="gt_row gt_left">Almirante Brown</td>
+<td headers="CIE10_codigo" class="gt_row gt_left">O85</td>
+<td headers="CIE10_descripcion" class="gt_row gt_left">COMPLICACIONES PRINCIPALMENTE RELACIONADAS CON EL PUERPERIO (O85 - O92)</td>
+<td headers="clasificacion" class="gt_row gt_left">DIRECTA</td>
+<td headers="cantidad" class="gt_row gt_right">1</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2009</td>
+<td headers="region_sanitaria " class="gt_row gt_left">VI</td>
+<td headers="municipio_id" class="gt_row gt_left">06028</td>
+<td headers="municipio_nombre " class="gt_row gt_left">Almirante Brown</td>
+<td headers="CIE10_codigo" class="gt_row gt_left">O15</td>
+<td headers="CIE10_descripcion" class="gt_row gt_left">EDEMA, PROTEINURIA Y TRASTORNOS HIPERTENSIVOS EN EL EMBARAZO, EL PARTO Y EL PUERPERIO (O10 - O16)</td>
+<td headers="clasificacion" class="gt_row gt_left">DIRECTA</td>
+<td headers="cantidad" class="gt_row gt_right">1</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2009</td>
+<td headers="region_sanitaria " class="gt_row gt_left">VI</td>
+<td headers="municipio_id" class="gt_row gt_left">06028</td>
+<td headers="municipio_nombre " class="gt_row gt_left">Almirante Brown</td>
+<td headers="CIE10_codigo" class="gt_row gt_left">O99</td>
+<td headers="CIE10_descripcion" class="gt_row gt_left">OTRAS AFECCIONES OBSTETRICAS NO CLASIFICADAS EN OTRA PARTE (O95 - O99)</td>
+<td headers="clasificacion" class="gt_row gt_left">INDIRECTA</td>
+<td headers="cantidad" class="gt_row gt_right">2</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2009</td>
+<td headers="region_sanitaria " class="gt_row gt_left">IX</td>
+<td headers="municipio_id" class="gt_row gt_left">06049</td>
+<td headers="municipio_nombre " class="gt_row gt_left">Azul</td>
+<td headers="CIE10_codigo" class="gt_row gt_left">O99</td>
+<td headers="CIE10_descripcion" class="gt_row gt_left">OTRAS AFECCIONES OBSTETRICAS NO CLASIFICADAS EN OTRA PARTE (O95 - O99)</td>
+<td headers="clasificacion" class="gt_row gt_left">INDIRECTA</td>
+<td headers="cantidad" class="gt_row gt_right">1</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2009</td>
+<td headers="region_sanitaria " class="gt_row gt_left">IV</td>
+<td headers="municipio_id" class="gt_row gt_left">06070</td>
+<td headers="municipio_nombre " class="gt_row gt_left">Baradero</td>
+<td headers="CIE10_codigo" class="gt_row gt_left">O99</td>
+<td headers="CIE10_descripcion" class="gt_row gt_left">OTRAS AFECCIONES OBSTETRICAS NO CLASIFICADAS EN OTRA PARTE (O95 - O99)</td>
+<td headers="clasificacion" class="gt_row gt_left">INDIRECTA</td>
+<td headers="cantidad" class="gt_row gt_right">1</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
 <p>Respecto a la estructuración de la base de datos está compuesta por 8
 variables y 1018 observaciones.</p>
 <pre class="r"><code>str(defunciones_maternas_2009_2021)</code></pre>
@@ -425,23 +872,437 @@ siguiente:</p>
 <pre class="r"><code>defunciones_maternas_2009_2021 %&gt;%
   select(anio, cantidad) %&gt;%
   group_by(anio) %&gt;%
-  summarise(cantidad_muertes_informadas = sum(cantidad)) </code></pre>
-<pre><code>## # A tibble: 13 × 2
-##     anio cantidad_muertes_informadas
-##    &lt;dbl&gt;                       &lt;dbl&gt;
-##  1  2009                         112
-##  2  2010                         128
-##  3  2011                          92
-##  4  2012                          86
-##  5  2013                          86
-##  6  2014                         100
-##  7  2015                         111
-##  8  2016                          92
-##  9  2017                          72
-## 10  2018                          89
-## 11  2019                          61
-## 12  2020                          65
-## 13  2021                         119</code></pre>
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %&gt;% 
+  gt()</code></pre>
+<div id="wivnsgqshm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wivnsgqshm table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#wivnsgqshm thead, #wivnsgqshm tbody, #wivnsgqshm tfoot, #wivnsgqshm tr, #wivnsgqshm td, #wivnsgqshm th {
+border-style: none;
+}
+#wivnsgqshm p {
+margin: 0;
+padding: 0;
+}
+#wivnsgqshm .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#wivnsgqshm .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#wivnsgqshm .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#wivnsgqshm .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#wivnsgqshm .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#wivnsgqshm .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#wivnsgqshm .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#wivnsgqshm .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#wivnsgqshm .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#wivnsgqshm .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#wivnsgqshm .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#wivnsgqshm .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#wivnsgqshm .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#wivnsgqshm .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#wivnsgqshm .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#wivnsgqshm .gt_from_md > :first-child {
+margin-top: 0;
+}
+#wivnsgqshm .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#wivnsgqshm .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#wivnsgqshm .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#wivnsgqshm .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#wivnsgqshm .gt_row_group_first td {
+border-top-width: 2px;
+}
+#wivnsgqshm .gt_row_group_first th {
+border-top-width: 2px;
+}
+#wivnsgqshm .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#wivnsgqshm .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#wivnsgqshm .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#wivnsgqshm .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#wivnsgqshm .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#wivnsgqshm .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#wivnsgqshm .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#wivnsgqshm .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#wivnsgqshm .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#wivnsgqshm .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#wivnsgqshm .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#wivnsgqshm .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#wivnsgqshm .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#wivnsgqshm .gt_left {
+text-align: left;
+}
+#wivnsgqshm .gt_center {
+text-align: center;
+}
+#wivnsgqshm .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#wivnsgqshm .gt_font_normal {
+font-weight: normal;
+}
+#wivnsgqshm .gt_font_bold {
+font-weight: bold;
+}
+#wivnsgqshm .gt_font_italic {
+font-style: italic;
+}
+#wivnsgqshm .gt_super {
+font-size: 65%;
+}
+#wivnsgqshm .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#wivnsgqshm .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#wivnsgqshm .gt_indent_1 {
+text-indent: 5px;
+}
+#wivnsgqshm .gt_indent_2 {
+text-indent: 10px;
+}
+#wivnsgqshm .gt_indent_3 {
+text-indent: 15px;
+}
+#wivnsgqshm .gt_indent_4 {
+text-indent: 20px;
+}
+#wivnsgqshm .gt_indent_5 {
+text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="anio">anio</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="cantidad_muertes_informadas">cantidad_muertes_informadas</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="anio" class="gt_row gt_right">2009</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">112</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2010</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">128</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2011</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">92</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2012</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">86</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2013</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">86</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2014</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2015</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">111</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2016</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">92</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2017</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">72</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2018</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">89</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2019</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">61</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2020</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">65</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2021</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">119</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
 <p>En el siguiente gráfico se puede observar que el año de mayor muertes
 maternas fue el 2010 y el registro mas bajo en el 2019. Además, se puede
 observar que desde el 2016 al 2020 el registro desciende sostenidamente,
@@ -479,23 +1340,437 @@ periodo 2009 al 2021:</p>
   filter(`region_sanitaria `== &quot;VI&quot;) %&gt;%
   select(anio, cantidad) %&gt;%
   group_by(anio) %&gt;%
-  summarise(cantidad_muertes_informadas = sum(cantidad))</code></pre>
-<pre><code>## # A tibble: 13 × 2
-##     anio cantidad_muertes_informadas
-##    &lt;dbl&gt;                       &lt;dbl&gt;
-##  1  2009                          31
-##  2  2010                          32
-##  3  2011                          21
-##  4  2012                          28
-##  5  2013                          16
-##  6  2014                          22
-##  7  2015                          23
-##  8  2016                          30
-##  9  2017                          15
-## 10  2018                          22
-## 11  2019                          14
-## 12  2020                          13
-## 13  2021                          25</code></pre>
+  summarise(cantidad_muertes_informadas = sum(cantidad)) %&gt;% 
+  gt()</code></pre>
+<div id="kquvqpxcof" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kquvqpxcof table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#kquvqpxcof thead, #kquvqpxcof tbody, #kquvqpxcof tfoot, #kquvqpxcof tr, #kquvqpxcof td, #kquvqpxcof th {
+border-style: none;
+}
+#kquvqpxcof p {
+margin: 0;
+padding: 0;
+}
+#kquvqpxcof .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#kquvqpxcof .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#kquvqpxcof .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#kquvqpxcof .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#kquvqpxcof .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#kquvqpxcof .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#kquvqpxcof .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#kquvqpxcof .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#kquvqpxcof .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#kquvqpxcof .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#kquvqpxcof .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#kquvqpxcof .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#kquvqpxcof .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#kquvqpxcof .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#kquvqpxcof .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#kquvqpxcof .gt_from_md > :first-child {
+margin-top: 0;
+}
+#kquvqpxcof .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#kquvqpxcof .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#kquvqpxcof .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kquvqpxcof .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#kquvqpxcof .gt_row_group_first td {
+border-top-width: 2px;
+}
+#kquvqpxcof .gt_row_group_first th {
+border-top-width: 2px;
+}
+#kquvqpxcof .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kquvqpxcof .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#kquvqpxcof .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#kquvqpxcof .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#kquvqpxcof .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kquvqpxcof .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#kquvqpxcof .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#kquvqpxcof .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#kquvqpxcof .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#kquvqpxcof .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#kquvqpxcof .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kquvqpxcof .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#kquvqpxcof .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kquvqpxcof .gt_left {
+text-align: left;
+}
+#kquvqpxcof .gt_center {
+text-align: center;
+}
+#kquvqpxcof .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#kquvqpxcof .gt_font_normal {
+font-weight: normal;
+}
+#kquvqpxcof .gt_font_bold {
+font-weight: bold;
+}
+#kquvqpxcof .gt_font_italic {
+font-style: italic;
+}
+#kquvqpxcof .gt_super {
+font-size: 65%;
+}
+#kquvqpxcof .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#kquvqpxcof .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#kquvqpxcof .gt_indent_1 {
+text-indent: 5px;
+}
+#kquvqpxcof .gt_indent_2 {
+text-indent: 10px;
+}
+#kquvqpxcof .gt_indent_3 {
+text-indent: 15px;
+}
+#kquvqpxcof .gt_indent_4 {
+text-indent: 20px;
+}
+#kquvqpxcof .gt_indent_5 {
+text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="anio">anio</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="cantidad_muertes_informadas">cantidad_muertes_informadas</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="anio" class="gt_row gt_right">2009</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">31</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2010</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">32</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2011</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">21</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2012</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">28</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2013</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">16</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2014</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">22</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2015</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">23</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2016</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">30</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2017</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">15</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2018</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">22</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2019</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">14</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2020</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">13</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2021</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">25</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
 <p>En el gráfico a continuación se observa que en la Región VI los años
 de mayor registro fueron el 2010 y 2016, y el registro más bajo
 2020.</p>
@@ -533,18 +1808,425 @@ tabla de frecuencias de registros por diagnóstico CIE 10:</p>
   select(CIE10_descripcion, cantidad) %&gt;%
   group_by(CIE10_descripcion) %&gt;%
   summarise(cantidad_muertes_informadas = sum(cantidad)) %&gt;%
-  arrange(desc(cantidad_muertes_informadas))</code></pre>
-<pre><code>## # A tibble: 7 × 2
-##   CIE10_descripcion                                       cantidad_muertes_inf…¹
-##   &lt;chr&gt;                                                                    &lt;dbl&gt;
-## 1 EMBARAZO TERMINADO EN ABORTO (O00 - O08)                                   223
-## 2 COMPLICACIONES PRINCIPALMENTE RELACIONADAS CON EL PUER…                    160
-## 3 COMPLICACIONES DEL TRABAJO DE PARTO Y DEL PARTO (O60 -…                    155
-## 4 EDEMA, PROTEINURIA Y TRASTORNOS HIPERTENSIVOS EN EL EM…                    155
-## 5 OTRAS AFECCIONES OBSTETRICAS NO CLASIFICADAS EN OTRA P…                     95
-## 6 ATENCION MATERNA RELACIONADA CON EL FETO Y LA CAVIDAD …                     32
-## 7 OTROS TRASTORNOS MATERNOS RELACIONADOS PRINCIPALMENTE …                     29
-## # ℹ abbreviated name: ¹​cantidad_muertes_informadas</code></pre>
+  arrange(desc(cantidad_muertes_informadas)) %&gt;% 
+  gt()</code></pre>
+<div id="kvnexnrgho" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kvnexnrgho table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#kvnexnrgho thead, #kvnexnrgho tbody, #kvnexnrgho tfoot, #kvnexnrgho tr, #kvnexnrgho td, #kvnexnrgho th {
+border-style: none;
+}
+#kvnexnrgho p {
+margin: 0;
+padding: 0;
+}
+#kvnexnrgho .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#kvnexnrgho .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#kvnexnrgho .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#kvnexnrgho .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#kvnexnrgho .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#kvnexnrgho .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#kvnexnrgho .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#kvnexnrgho .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#kvnexnrgho .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#kvnexnrgho .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#kvnexnrgho .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#kvnexnrgho .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#kvnexnrgho .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#kvnexnrgho .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#kvnexnrgho .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#kvnexnrgho .gt_from_md > :first-child {
+margin-top: 0;
+}
+#kvnexnrgho .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#kvnexnrgho .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#kvnexnrgho .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kvnexnrgho .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#kvnexnrgho .gt_row_group_first td {
+border-top-width: 2px;
+}
+#kvnexnrgho .gt_row_group_first th {
+border-top-width: 2px;
+}
+#kvnexnrgho .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kvnexnrgho .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#kvnexnrgho .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#kvnexnrgho .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#kvnexnrgho .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kvnexnrgho .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#kvnexnrgho .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#kvnexnrgho .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#kvnexnrgho .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#kvnexnrgho .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#kvnexnrgho .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kvnexnrgho .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#kvnexnrgho .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kvnexnrgho .gt_left {
+text-align: left;
+}
+#kvnexnrgho .gt_center {
+text-align: center;
+}
+#kvnexnrgho .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#kvnexnrgho .gt_font_normal {
+font-weight: normal;
+}
+#kvnexnrgho .gt_font_bold {
+font-weight: bold;
+}
+#kvnexnrgho .gt_font_italic {
+font-style: italic;
+}
+#kvnexnrgho .gt_super {
+font-size: 65%;
+}
+#kvnexnrgho .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#kvnexnrgho .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#kvnexnrgho .gt_indent_1 {
+text-indent: 5px;
+}
+#kvnexnrgho .gt_indent_2 {
+text-indent: 10px;
+}
+#kvnexnrgho .gt_indent_3 {
+text-indent: 15px;
+}
+#kvnexnrgho .gt_indent_4 {
+text-indent: 20px;
+}
+#kvnexnrgho .gt_indent_5 {
+text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="CIE10_descripcion">CIE10_descripcion</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="cantidad_muertes_informadas">cantidad_muertes_informadas</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="CIE10_descripcion" class="gt_row gt_left">EMBARAZO TERMINADO EN ABORTO (O00 - O08)</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">223</td></tr>
+    <tr><td headers="CIE10_descripcion" class="gt_row gt_left">COMPLICACIONES PRINCIPALMENTE RELACIONADAS CON EL PUERPERIO (O85 - O92)</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">160</td></tr>
+    <tr><td headers="CIE10_descripcion" class="gt_row gt_left">COMPLICACIONES DEL TRABAJO DE PARTO Y DEL PARTO (O60 - O75)</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">155</td></tr>
+    <tr><td headers="CIE10_descripcion" class="gt_row gt_left">EDEMA, PROTEINURIA Y TRASTORNOS HIPERTENSIVOS EN EL EMBARAZO, EL PARTO Y EL PUERPERIO (O10 - O16)</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">155</td></tr>
+    <tr><td headers="CIE10_descripcion" class="gt_row gt_left">OTRAS AFECCIONES OBSTETRICAS NO CLASIFICADAS EN OTRA PARTE (O95 - O99)</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">95</td></tr>
+    <tr><td headers="CIE10_descripcion" class="gt_row gt_left">ATENCION MATERNA RELACIONADA CON EL FETO Y LA CAVIDAD AMNIOTICA Y CON POSIBLES PROBLEMAS DEL PARTO (O30-O48)</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">32</td></tr>
+    <tr><td headers="CIE10_descripcion" class="gt_row gt_left">OTROS TRASTORNOS MATERNOS RELACIONADOS PRINCIPALMENTE CON EL EMBARAZO (O20 - O29)</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">29</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
 <p>Lo mismo sucede para la región Sanitaria VI, el mayor registro es de
 “embarazo terminado en aborto”.</p>
 <pre class="r"><code>defunciones_maternas_2009_2021 %&gt;%
@@ -552,18 +2234,425 @@ tabla de frecuencias de registros por diagnóstico CIE 10:</p>
   select(CIE10_descripcion, cantidad) %&gt;%
   group_by(CIE10_descripcion) %&gt;%
   summarise(cantidad_muertes_informadas = sum(cantidad)) %&gt;%
-  arrange(desc(cantidad_muertes_informadas))</code></pre>
-<pre><code>## # A tibble: 7 × 2
-##   CIE10_descripcion                                       cantidad_muertes_inf…¹
-##   &lt;chr&gt;                                                                    &lt;dbl&gt;
-## 1 EMBARAZO TERMINADO EN ABORTO (O00 - O08)                                    56
-## 2 COMPLICACIONES DEL TRABAJO DE PARTO Y DEL PARTO (O60 -…                     42
-## 3 COMPLICACIONES PRINCIPALMENTE RELACIONADAS CON EL PUER…                     40
-## 4 EDEMA, PROTEINURIA Y TRASTORNOS HIPERTENSIVOS EN EL EM…                     40
-## 5 OTRAS AFECCIONES OBSTETRICAS NO CLASIFICADAS EN OTRA P…                     28
-## 6 OTROS TRASTORNOS MATERNOS RELACIONADOS PRINCIPALMENTE …                      6
-## 7 ATENCION MATERNA RELACIONADA CON EL FETO Y LA CAVIDAD …                      4
-## # ℹ abbreviated name: ¹​cantidad_muertes_informadas</code></pre>
+  arrange(desc(cantidad_muertes_informadas)) %&gt;% 
+  gt()</code></pre>
+<div id="biqnrfwvvr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#biqnrfwvvr table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#biqnrfwvvr thead, #biqnrfwvvr tbody, #biqnrfwvvr tfoot, #biqnrfwvvr tr, #biqnrfwvvr td, #biqnrfwvvr th {
+border-style: none;
+}
+#biqnrfwvvr p {
+margin: 0;
+padding: 0;
+}
+#biqnrfwvvr .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#biqnrfwvvr .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#biqnrfwvvr .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#biqnrfwvvr .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#biqnrfwvvr .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#biqnrfwvvr .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#biqnrfwvvr .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#biqnrfwvvr .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#biqnrfwvvr .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#biqnrfwvvr .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#biqnrfwvvr .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#biqnrfwvvr .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#biqnrfwvvr .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#biqnrfwvvr .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#biqnrfwvvr .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#biqnrfwvvr .gt_from_md > :first-child {
+margin-top: 0;
+}
+#biqnrfwvvr .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#biqnrfwvvr .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#biqnrfwvvr .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#biqnrfwvvr .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#biqnrfwvvr .gt_row_group_first td {
+border-top-width: 2px;
+}
+#biqnrfwvvr .gt_row_group_first th {
+border-top-width: 2px;
+}
+#biqnrfwvvr .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#biqnrfwvvr .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#biqnrfwvvr .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#biqnrfwvvr .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#biqnrfwvvr .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#biqnrfwvvr .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#biqnrfwvvr .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#biqnrfwvvr .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#biqnrfwvvr .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#biqnrfwvvr .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#biqnrfwvvr .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#biqnrfwvvr .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#biqnrfwvvr .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#biqnrfwvvr .gt_left {
+text-align: left;
+}
+#biqnrfwvvr .gt_center {
+text-align: center;
+}
+#biqnrfwvvr .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#biqnrfwvvr .gt_font_normal {
+font-weight: normal;
+}
+#biqnrfwvvr .gt_font_bold {
+font-weight: bold;
+}
+#biqnrfwvvr .gt_font_italic {
+font-style: italic;
+}
+#biqnrfwvvr .gt_super {
+font-size: 65%;
+}
+#biqnrfwvvr .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#biqnrfwvvr .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#biqnrfwvvr .gt_indent_1 {
+text-indent: 5px;
+}
+#biqnrfwvvr .gt_indent_2 {
+text-indent: 10px;
+}
+#biqnrfwvvr .gt_indent_3 {
+text-indent: 15px;
+}
+#biqnrfwvvr .gt_indent_4 {
+text-indent: 20px;
+}
+#biqnrfwvvr .gt_indent_5 {
+text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="CIE10_descripcion">CIE10_descripcion</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="cantidad_muertes_informadas">cantidad_muertes_informadas</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="CIE10_descripcion" class="gt_row gt_left">EMBARAZO TERMINADO EN ABORTO (O00 - O08)</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">56</td></tr>
+    <tr><td headers="CIE10_descripcion" class="gt_row gt_left">COMPLICACIONES DEL TRABAJO DE PARTO Y DEL PARTO (O60 - O75)</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">42</td></tr>
+    <tr><td headers="CIE10_descripcion" class="gt_row gt_left">COMPLICACIONES PRINCIPALMENTE RELACIONADAS CON EL PUERPERIO (O85 - O92)</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">40</td></tr>
+    <tr><td headers="CIE10_descripcion" class="gt_row gt_left">EDEMA, PROTEINURIA Y TRASTORNOS HIPERTENSIVOS EN EL EMBARAZO, EL PARTO Y EL PUERPERIO (O10 - O16)</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">40</td></tr>
+    <tr><td headers="CIE10_descripcion" class="gt_row gt_left">OTRAS AFECCIONES OBSTETRICAS NO CLASIFICADAS EN OTRA PARTE (O95 - O99)</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">28</td></tr>
+    <tr><td headers="CIE10_descripcion" class="gt_row gt_left">OTROS TRASTORNOS MATERNOS RELACIONADOS PRINCIPALMENTE CON EL EMBARAZO (O20 - O29)</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">6</td></tr>
+    <tr><td headers="CIE10_descripcion" class="gt_row gt_left">ATENCION MATERNA RELACIONADA CON EL FETO Y LA CAVIDAD AMNIOTICA Y CON POSIBLES PROBLEMAS DEL PARTO (O30-O48)</td>
+<td headers="cantidad_muertes_informadas" class="gt_row gt_right">4</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
 <p>El siguiente gráfico muestra que a pesar que el “embarazo terminado
 en aborto” es la causa mas frecuente de muerte materna directa en PBA,
 se encuentra en descenso:</p>
@@ -625,7 +2714,7 @@ poblacional en la PBA.</p>
   summarise(cantidad_muertes_informadas = sum(cantidad)) %&gt;%
   pivot_wider(names_from = `region_sanitaria `,
               values_from = cantidad_muertes_informadas,
-              values_fill = 0) %&gt;% 
+              values_fill = 0) %&gt;%
   select(c(V, VI, VII, XII)) %&gt;% 
   print()</code></pre>
 <pre><code>## `summarise()` has grouped output by &#39;anio&#39;. You can override using the
@@ -653,27 +2742,498 @@ necesario tener la cantidad de nacidos vivos de cada región.</p>
 <p>Nuevamente se recurrió al catálogo de datos abiertos de la Dirección
 Provincial de Estadística y Salud Digital.</p>
 <pre class="r"><code>nacidos_vivos_regiones_PBA &lt;- read_excel(&quot;datos/nacidos_vivos_regiones_PBA.xlsx&quot;)
-print(nacidos_vivos_regiones_PBA)</code></pre>
-<pre><code>## # A tibble: 17 × 5
-##     anio     V    VI   VII   XII
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1  2005 54706 67630 38088 24840
-##  2  2006 55774 66110 38221 25170
-##  3  2007 56193 67081 38612 26101
-##  4  2008 59432 73163 40813 28341
-##  5  2009 59683 72541 40519 28227
-##  6  2010 61576 74738 41851 28994
-##  7  2011 62490 75980 42398 29423
-##  8  2012 60768 72834 40454 28663
-##  9  2013 62430 74601 42030 28890
-## 10  2014 62890 75793 42582 29246
-## 11  2015 60811 73046 42215 28593
-## 12  2016 57228 68740 39828 26678
-## 13  2017 55096 67301 37787 25918
-## 14  2018 51735 63777 36485 24625
-## 15  2019 48236 57094 32385 22513
-## 16  2020 39065 47842 27710 18778
-## 17  2021 39970 46769 26082 18407</code></pre>
+gt(nacidos_vivos_regiones_PBA)</code></pre>
+<div id="uphbmzqwjb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uphbmzqwjb table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#uphbmzqwjb thead, #uphbmzqwjb tbody, #uphbmzqwjb tfoot, #uphbmzqwjb tr, #uphbmzqwjb td, #uphbmzqwjb th {
+border-style: none;
+}
+#uphbmzqwjb p {
+margin: 0;
+padding: 0;
+}
+#uphbmzqwjb .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#uphbmzqwjb .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#uphbmzqwjb .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#uphbmzqwjb .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#uphbmzqwjb .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#uphbmzqwjb .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#uphbmzqwjb .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#uphbmzqwjb .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#uphbmzqwjb .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#uphbmzqwjb .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#uphbmzqwjb .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#uphbmzqwjb .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#uphbmzqwjb .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#uphbmzqwjb .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#uphbmzqwjb .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#uphbmzqwjb .gt_from_md > :first-child {
+margin-top: 0;
+}
+#uphbmzqwjb .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#uphbmzqwjb .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#uphbmzqwjb .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#uphbmzqwjb .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#uphbmzqwjb .gt_row_group_first td {
+border-top-width: 2px;
+}
+#uphbmzqwjb .gt_row_group_first th {
+border-top-width: 2px;
+}
+#uphbmzqwjb .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#uphbmzqwjb .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#uphbmzqwjb .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#uphbmzqwjb .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#uphbmzqwjb .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#uphbmzqwjb .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#uphbmzqwjb .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#uphbmzqwjb .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#uphbmzqwjb .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#uphbmzqwjb .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#uphbmzqwjb .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#uphbmzqwjb .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#uphbmzqwjb .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#uphbmzqwjb .gt_left {
+text-align: left;
+}
+#uphbmzqwjb .gt_center {
+text-align: center;
+}
+#uphbmzqwjb .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#uphbmzqwjb .gt_font_normal {
+font-weight: normal;
+}
+#uphbmzqwjb .gt_font_bold {
+font-weight: bold;
+}
+#uphbmzqwjb .gt_font_italic {
+font-style: italic;
+}
+#uphbmzqwjb .gt_super {
+font-size: 65%;
+}
+#uphbmzqwjb .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#uphbmzqwjb .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#uphbmzqwjb .gt_indent_1 {
+text-indent: 5px;
+}
+#uphbmzqwjb .gt_indent_2 {
+text-indent: 10px;
+}
+#uphbmzqwjb .gt_indent_3 {
+text-indent: 15px;
+}
+#uphbmzqwjb .gt_indent_4 {
+text-indent: 20px;
+}
+#uphbmzqwjb .gt_indent_5 {
+text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="anio">anio</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="V">V</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="VI">VI</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="VII">VII</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="XII">XII</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="anio" class="gt_row gt_right">2005</td>
+<td headers="V" class="gt_row gt_right">54706</td>
+<td headers="VI" class="gt_row gt_right">67630</td>
+<td headers="VII" class="gt_row gt_right">38088</td>
+<td headers="XII" class="gt_row gt_right">24840</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2006</td>
+<td headers="V" class="gt_row gt_right">55774</td>
+<td headers="VI" class="gt_row gt_right">66110</td>
+<td headers="VII" class="gt_row gt_right">38221</td>
+<td headers="XII" class="gt_row gt_right">25170</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2007</td>
+<td headers="V" class="gt_row gt_right">56193</td>
+<td headers="VI" class="gt_row gt_right">67081</td>
+<td headers="VII" class="gt_row gt_right">38612</td>
+<td headers="XII" class="gt_row gt_right">26101</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2008</td>
+<td headers="V" class="gt_row gt_right">59432</td>
+<td headers="VI" class="gt_row gt_right">73163</td>
+<td headers="VII" class="gt_row gt_right">40813</td>
+<td headers="XII" class="gt_row gt_right">28341</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2009</td>
+<td headers="V" class="gt_row gt_right">59683</td>
+<td headers="VI" class="gt_row gt_right">72541</td>
+<td headers="VII" class="gt_row gt_right">40519</td>
+<td headers="XII" class="gt_row gt_right">28227</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2010</td>
+<td headers="V" class="gt_row gt_right">61576</td>
+<td headers="VI" class="gt_row gt_right">74738</td>
+<td headers="VII" class="gt_row gt_right">41851</td>
+<td headers="XII" class="gt_row gt_right">28994</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2011</td>
+<td headers="V" class="gt_row gt_right">62490</td>
+<td headers="VI" class="gt_row gt_right">75980</td>
+<td headers="VII" class="gt_row gt_right">42398</td>
+<td headers="XII" class="gt_row gt_right">29423</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2012</td>
+<td headers="V" class="gt_row gt_right">60768</td>
+<td headers="VI" class="gt_row gt_right">72834</td>
+<td headers="VII" class="gt_row gt_right">40454</td>
+<td headers="XII" class="gt_row gt_right">28663</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2013</td>
+<td headers="V" class="gt_row gt_right">62430</td>
+<td headers="VI" class="gt_row gt_right">74601</td>
+<td headers="VII" class="gt_row gt_right">42030</td>
+<td headers="XII" class="gt_row gt_right">28890</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2014</td>
+<td headers="V" class="gt_row gt_right">62890</td>
+<td headers="VI" class="gt_row gt_right">75793</td>
+<td headers="VII" class="gt_row gt_right">42582</td>
+<td headers="XII" class="gt_row gt_right">29246</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2015</td>
+<td headers="V" class="gt_row gt_right">60811</td>
+<td headers="VI" class="gt_row gt_right">73046</td>
+<td headers="VII" class="gt_row gt_right">42215</td>
+<td headers="XII" class="gt_row gt_right">28593</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2016</td>
+<td headers="V" class="gt_row gt_right">57228</td>
+<td headers="VI" class="gt_row gt_right">68740</td>
+<td headers="VII" class="gt_row gt_right">39828</td>
+<td headers="XII" class="gt_row gt_right">26678</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2017</td>
+<td headers="V" class="gt_row gt_right">55096</td>
+<td headers="VI" class="gt_row gt_right">67301</td>
+<td headers="VII" class="gt_row gt_right">37787</td>
+<td headers="XII" class="gt_row gt_right">25918</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2018</td>
+<td headers="V" class="gt_row gt_right">51735</td>
+<td headers="VI" class="gt_row gt_right">63777</td>
+<td headers="VII" class="gt_row gt_right">36485</td>
+<td headers="XII" class="gt_row gt_right">24625</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2019</td>
+<td headers="V" class="gt_row gt_right">48236</td>
+<td headers="VI" class="gt_row gt_right">57094</td>
+<td headers="VII" class="gt_row gt_right">32385</td>
+<td headers="XII" class="gt_row gt_right">22513</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2020</td>
+<td headers="V" class="gt_row gt_right">39065</td>
+<td headers="VI" class="gt_row gt_right">47842</td>
+<td headers="VII" class="gt_row gt_right">27710</td>
+<td headers="XII" class="gt_row gt_right">18778</td></tr>
+    <tr><td headers="anio" class="gt_row gt_right">2021</td>
+<td headers="V" class="gt_row gt_right">39970</td>
+<td headers="VI" class="gt_row gt_right">46769</td>
+<td headers="VII" class="gt_row gt_right">26082</td>
+<td headers="XII" class="gt_row gt_right">18407</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
 <p>Se busco conjugar ambas bases para poder calcular las tasas.</p>
 <pre class="r"><code>nacidos_vivos_regiones_PBA &lt;- read_excel(&quot;datos/nacidos_vivos_regiones_PBA.xlsx&quot;) |&gt; 
   pivot_longer(cols = -anio, names_to = &quot;region_sanitaria&quot;, values_to = &quot;nacidos_vivos&quot;) %&gt;%
