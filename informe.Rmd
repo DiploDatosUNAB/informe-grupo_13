@@ -87,15 +87,6 @@ ggplot(aes(anio, cantidad_muertes_informadas)) +
 ```
 
 
-```{r}
-defunciones_maternas_2009_2021 %>%
-  select(anio, cantidad) %>%
-  group_by(anio) %>%
-  summarise(cantidad_muertes_informadas = sum(cantidad)) %>%
-  ggplot(aes(anio, cantidad_muertes_informadas)) +
-  geom_line (color = "red")
-```
-
 Desagregando los resultados, la tabla siguiente presenta las frecuencias de muertes maternas dentro de la Región Sanitaria VI en el periodo 2009 al 2021:
 
 ```{r}
@@ -122,18 +113,6 @@ defunciones_maternas_2009_2021 %>%
   ggforce::geom_mark_circle(aes(filter = cantidad_muertes_informadas == min(cantidad_muertes_informadas),
                                 label = cantidad_muertes_informadas))
 
-```
-
-
-
-```{r}
-defunciones_maternas_2009_2021 %>%
-  filter(`region_sanitaria `== "VI") %>%
-  select(anio, cantidad) %>%
-  group_by(anio) %>%
-  summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
-  ggplot(aes(anio, cantidad_muertes_informadas)) +
-  geom_line (color = "red")
 ```
 
 
@@ -181,17 +160,6 @@ defunciones_maternas_2009_2021 %>%
  
 ```
 
-
-
-```{r}
-defunciones_maternas_2009_2021 %>%
-  filter(CIE10_descripcion == "EMBARAZO TERMINADO EN ABORTO (O00 - O08)") %>%
-  group_by(anio) %>%
-  summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
-  ggplot(aes(anio, cantidad_muertes_informadas)) +
-  geom_line (color = "red")
-```
-
 Respecto a las muertes maternas donde las causas obstétricas son indirectas (resultan de enfermedad existente desde antes del embarazo o de una enfermedad que evoluciona durante el mismo, no debidas a causas obstétricas directas, pero sí agravadas por los efectos fisiológicos del embarazo) se observa una elevación abrupta durante el 2021 en PBA:
 
 
@@ -209,19 +177,6 @@ defunciones_maternas_2009_2021 %>%
                                 label = cantidad_muertes_informadas))
 
 ```
-
-
-
-
-```{r}
-defunciones_maternas_2009_2021 %>%
-  filter(CIE10_descripcion == "OTRAS AFECCIONES OBSTETRICAS NO CLASIFICADAS EN OTRA PARTE (O95 - O99)") %>%
-  group_by(anio) %>%
-  summarise(cantidad_muertes_informadas = sum(cantidad)) %>% 
-  ggplot(aes(anio, cantidad_muertes_informadas)) +
-  geom_line (color = "red")
-```
-
 
 ## Hipótesis
 
@@ -244,7 +199,6 @@ tabla_regio_an <-defunciones_maternas_2009_2021 %>%
 ```
 
  
-
 Para el calculo de las tasas por año de estas cuatro regiones fue necesario tener la cantidad de nacidos vivos de cada región.
 
 Nuevamente se recurrió al catálogo de datos abiertos de la Dirección Provincial de Estadística y Salud Digital. 
@@ -296,24 +250,6 @@ defunciones_maternas_2009_2021 %>%
 ```
 
 
-
-```{r}
-defunciones_maternas_2009_2021 %>%
-  group_by(anio, region_sanitaria = `region_sanitaria ` ) %>% 
-  summarise(cantidad_muertes_informadas = sum(cantidad)) |> 
-  left_join(nacidos_vivos_regiones_PBA) |> 
-  mutate(tasa = round(
-    (cantidad_muertes_informadas/nacidos_vivos)*100000, 2)) %>%
-  select(anio, region_sanitaria, tasa) %>% 
-  filter(region_sanitaria %in% c("V", "VI", "VII", "XII")) %>%
-  ggplot(aes(anio, tasa))+
-  geom_line(aes(color= region_sanitaria))+
-  geom_point()
-
-
-```
-
-
 Al compara las tasas de mortalidad materna se puede observar que la región VII se encuentra por arriba de las otras tasas en varios años, 2010, 2013, 2014, 2017, y 2020. En cambio, la región XII supera a las demás en los años 2011, 2018 y en la actualidad. Por último, las tasas más altas se observan en los años 2010 y 2021, donde aproximadamente 80 mujeres morían por cada 100.000 nacidos vivos. 
 Se puede decir que hay diferencias importantes entres las tasas de mortalidad materna en las cuatro regiones analizadas, donde las regiones VII y XII registran diferencias por encima en varios periodos de tiempos.
 
@@ -336,6 +272,7 @@ tabla_anio_cla <- defunciones_maternas_2009_2021 %>%
 ```
 La tabla muestra la cantidad de muertes por año según causas directas o indirectas.
 
+
 ```{r}
 defunciones_maternas_2009_2021 %>% 
   group_by(anio, clasificacion) %>%
@@ -347,18 +284,6 @@ defunciones_maternas_2009_2021 %>%
 
 ```
 
-
-
-
-```{r}
-defunciones_maternas_2009_2021 %>% 
-  group_by(anio, clasificacion) %>%
-  summarise(cantidad_muertes_informadas = sum(cantidad)) %>%
-  ggplot(aes(anio, cantidad_muertes_informadas))+
-  geom_line(aes(color= clasificacion))+
-  geom_point()
-  
-```
 
 El gráfico muestra que de las muertes maternas directas tienen una tendencia en descenso para el periodo analizado. En cambio, las muertes maternas indirectas se encontraban en una meseta, pero del 2020 al 2021 registran un aumento elevado. Muchos artículos informan sobre esto, debido al impacto que tuvo el COVID en las embarazadas.
 
